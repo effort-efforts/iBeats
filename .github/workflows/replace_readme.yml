@@ -35,7 +35,12 @@ jobs:
       - name: Replace README AND generate SVG
         run: |
           python main.py $'${{ github.event.inputs.time }}' $'${{ github.event.inputs.value }}'
-
+          
+      - name: Print Action IDs
+        run: |
+          echo "Workflow Run ID is ${{ github.run_id }}"
+          echo "Job Check Run ID is ${{ job.check_run_id }}"
+          
       - name: Push README
         run: |
           git config --local user.email "${{ env.GITHUB_EMAIL }}"
